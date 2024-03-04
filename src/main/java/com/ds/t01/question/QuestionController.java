@@ -4,20 +4,23 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RestController
-@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:8080")
 public class QuestionController {
 	
-	@Autowired
-	private QuestionRepository questionRepository;
+	private final QuestionService questionService;
 	
 	@GetMapping("question/list")
 	public String list(Model model) {
-		List<Question> questionList = this.questionRepository.findAll();
+		List<Question> questionList = this.questionService.getList();
         model.addAttribute("questionList", questionList);
 		return "qlist";
 	}

@@ -10,6 +10,7 @@ import com.ds.t01.user.User;
 
 @Controller
 public class RegisterController {
+	
 	@GetMapping("/register")
     @ResponseBody
     public String Register() {
