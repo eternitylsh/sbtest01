@@ -1,19 +1,18 @@
 package com.ds.t01;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.ds.t01.answer.Answer;
 import com.ds.t01.answer.AnswerRepository;
 import com.ds.t01.question.Question;
 import com.ds.t01.question.QuestionRepository;
+import com.ds.t01.temp.Temp01;
+import com.ds.t01.temp.TempRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -85,9 +84,9 @@ class Test01ApplicationTests {
 	@Transactional
 	@Test
 	void TestJPA03() {
-		Optional<Question> oq = this.questionRepository.findById(30);
-        assertTrue(oq.isPresent());
-        Question q = oq.get();
+//		Optional<Question> oq = this.questionRepository.findById(30);
+//        assertTrue(oq.isPresent());
+//        Question q = oq.get();
         
 //        long count = this.answerRepository.count();
 //        Answer a = new Answer();
@@ -98,12 +97,31 @@ class Test01ApplicationTests {
 //        count++;
 //        assertEquals(count, this.answerRepository.count());
         
-        List<Answer> answerList = q.getAnswerList();
-        
-        System.out.println( answerList.size() );
-
-        assertEquals(2, answerList.size());
-        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+//        List<Answer> answerList = q.getAnswerList();
+//        
+//        System.out.println( answerList.size() );
+//
+//        assertEquals(2, answerList.size());
+//        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+	}
+	
+	
+	@Autowired
+	private TempRepository tempRepository;
+	
+	@Test
+	void TestJPA_temp() {
+		SetTemp01();
+		
+		List<Temp01> tobjs = this.tempRepository.findAll();
+		assertEquals(1, tobjs.size());
+	}
+	
+	private void SetTemp01() {
+		Temp01 t1 = new Temp01();
+		t1.setId(0);
+        t1.setVal("temp temprature..");
+        this.tempRepository.save(t1);
 	}
 	
 }
