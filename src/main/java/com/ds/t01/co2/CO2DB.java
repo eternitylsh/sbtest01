@@ -1,4 +1,6 @@
-package com.ds.t01.temp;
+package com.ds.t01.co2;
+
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,11 +13,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Temp01 {
-	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	private Integer id;
+public class CO2DB {
 	
-	@Column(length = 200)
-	private String val;
+	@Column
+	private Date mmdate;
+	
+	@Column
+	private Integer CO2;
+	
+	@Id
+	@Column(name="")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 }

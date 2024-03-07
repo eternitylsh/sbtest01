@@ -3,8 +3,6 @@ package com.ds.t01.question;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.ds.t01.answer.Answer;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +29,4 @@ public class Question {
     private String content;
 
     private LocalDateTime createDate;
-    
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) 
-    private List<Answer> answerList; 
 }

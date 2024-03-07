@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.ds.t01.answer.AnswerRepository;
 import com.ds.t01.question.Question;
 import com.ds.t01.question.QuestionRepository;
 import com.ds.t01.temp.Temp01;
@@ -23,7 +22,7 @@ class Test01ApplicationTests {
 	private QuestionRepository questionRepository;
 	
 	@Autowired
-    private AnswerRepository answerRepository;
+    // private AnswerRepository answerRepository;
 	
 	@Test
 	void contextLoads() {
