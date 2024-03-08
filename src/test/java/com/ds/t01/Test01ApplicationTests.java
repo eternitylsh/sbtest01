@@ -10,9 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.ds.t01.question.Question;
 import com.ds.t01.question.QuestionRepository;
-import com.ds.t01.temp.Temp01;
-import com.ds.t01.temp.TempRepository;
-
 import jakarta.transaction.Transactional;
 
 @SpringBootTest
@@ -102,25 +99,6 @@ class Test01ApplicationTests {
 //
 //        assertEquals(2, answerList.size());
 //        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
-	}
-	
-	
-	@Autowired
-	private TempRepository tempRepository;
-	
-	@Test
-	void TestJPA_temp() {
-		SetTemp01();
-		
-		List<Temp01> tobjs = this.tempRepository.findAll();
-		assertEquals(1, tobjs.size());
-	}
-	
-	private void SetTemp01() {
-		Temp01 t1 = new Temp01();
-		t1.setId(0);
-        t1.setVal("temp temprature..");
-        this.tempRepository.save(t1);
 	}
 	
 }
